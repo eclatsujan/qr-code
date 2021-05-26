@@ -1,0 +1,13 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home2/reshaminfo/poultryLaravel/
+    - mkdir -p /home2/reshaminfo/poultryLaravel/
+    - /bin/cp -R * $DEPLOYPATH
+    - cd /home2/reshaminfo/poultryLaravel/
+    - /opt/cpanel/composer/bin/composer install && /opt/cpanel/composer/bin/composer dump-autoload
+    - php artisan migrate && php artisan cache:clear && php artisan optimize:clear
+    - export DEPLOYPATH=/home2/reshaminfo/public_html/poultry/
+    - rm -rf $DEPLOYPATH/js && rm -rf $DEPLOYPATH/css
+    - mkdir $DEPLOYPATH/js && mkdir $DEPLOYPATH/css
+    - /bin/cp ./public/js/*.js $DEPLOYPATH/js
+    - /bin/cp ./public/css/*.css $DEPLOYPATH/css
