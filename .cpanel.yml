@@ -1,12 +1,12 @@
 deployment:
   tasks:
-    - export DEPLOYPATH=/home2/reshaminfo/poultryLaravel/
-    - mkdir -p /home2/reshaminfo/poultryLaravel/
+    - export DEPLOYPATH=/home2/reshaminfo/qrCode/
+    - mkdir -p /home2/reshaminfo/qrCode/
     - /bin/cp -R * $DEPLOYPATH
-    - cd /home2/reshaminfo/poultryLaravel/
+    - cd /home2/reshaminfo/qrCode/
     - /opt/cpanel/composer/bin/composer install && /opt/cpanel/composer/bin/composer dump-autoload
     - php artisan migrate && php artisan cache:clear && php artisan optimize:clear
-    - export DEPLOYPATH=/home2/reshaminfo/public_html/poultry/
+    - export DEPLOYPATH=/home2/reshaminfo/qr.resham.info.np/
     - rm -rf $DEPLOYPATH/js && rm -rf $DEPLOYPATH/css
     - mkdir $DEPLOYPATH/js && mkdir $DEPLOYPATH/css
     - /bin/cp ./public/js/*.js $DEPLOYPATH/js
