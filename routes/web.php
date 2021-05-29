@@ -34,5 +34,5 @@ Route::get('/redirect',function(Request $request){
     }else if($Android){
         $to="fb://page/".$company_name;
     }
-    return Redirect::to($to); 
+    return Redirect::away($to); 
 });
