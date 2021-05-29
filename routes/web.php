@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 Route::resource('/generate',Generator::class);
 
-Route::get('/resource',function(Request $request){
+Route::get('/redirect',function(Request $request){
     $company_name=$request->get('q');
     $iPod    = stripos($_SERVER['HTTP_USER_AGENT'],"iPod");
     $iPhone  = stripos($_SERVER['HTTP_USER_AGENT'],"iPhone");
