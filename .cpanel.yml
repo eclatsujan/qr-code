@@ -1,9 +1,9 @@
 deployment:
   tasks:
-    - export DEPLOYPATH=/home2/reshaminfo/qrCode/
-    - mkdir -p /home2/reshaminfo/qrCode/
+    - export DEPLOYPATH=/home2/reshaminfo/qr-code/
+    - mkdir -p /home2/reshaminfo/qr-code/
     - /bin/cp -R * $DEPLOYPATH
-    - cd /home2/reshaminfo/qrCode/
+    - cd /home2/reshaminfo/qr-code/
     - export DEPLOYPATH=/home2/reshaminfo/qr.resham.info.np/
     - rm -rf $DEPLOYPATH/js && rm -rf $DEPLOYPATH/css
     - rm -rf $DEPLOYPATH/assets && rm -rf $DEPLOYPATH/assets
