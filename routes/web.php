@@ -28,6 +28,7 @@ Route::get('/redirect',function(Request $request){
     $iPhone  = stripos($_SERVER['HTTP_USER_AGENT'],"iPhone");
     $iPad    = stripos($_SERVER['HTTP_USER_AGENT'],"iPad");
     $Android = stripos($_SERVER['HTTP_USER_AGENT'],"Android");
+    $to="";
     if($iPod||$iPhone||$iPad){
         $to="fb://profile/".$company_name;
     }else if($Android){
