@@ -4,10 +4,10 @@ deployment:
     - mkdir -p /home2/reshaminfo/qrCode/
     - /bin/cp -R * $DEPLOYPATH
     - cd /home2/reshaminfo/qrCode/
-    - /opt/cpanel/composer/bin/composer install && /opt/cpanel/composer/bin/composer dump-autoload
-    - php artisan migrate && php artisan cache:clear && php artisan optimize:clear
     - export DEPLOYPATH=/home2/reshaminfo/qr.resham.info.np/
     - rm -rf $DEPLOYPATH/js && rm -rf $DEPLOYPATH/css
+    - rm -rf $DEPLOYPATH/assets && rm -rf $DEPLOYPATH/assets
     - mkdir $DEPLOYPATH/js && mkdir $DEPLOYPATH/css
     - /bin/cp ./public/js/*.js $DEPLOYPATH/js
     - /bin/cp ./public/css/*.css $DEPLOYPATH/css
+    - /bin/cp ./public/assets/* $DEPLOYPATH/assets
