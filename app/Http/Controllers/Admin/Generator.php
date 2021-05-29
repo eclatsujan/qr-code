@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\QrService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 
 class Generator extends Controller
 {
@@ -26,8 +27,8 @@ class Generator extends Controller
      */
     public function create(QrService $qrService)
     {
-        $result=$qrService->generate('https://google.com.au ');
-        //
+        $base_url=URL::to('/redirect?q=browsexpert');
+        $result=$qrService->generate($base_url,public_path('assets/logo.png'),'Brows Expert');
         header('Content-Type: '.$result->getMimeType());
         echo $result->getString();
     }
