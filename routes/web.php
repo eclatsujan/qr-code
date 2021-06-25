@@ -1,8 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Generator;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
+use App\Http\Controllers\Company;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,19 +19,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/generate',Generator::class);
+Route::get('/{companyName}/options',[Company::class,'showOptions']);
+Route::get('/{companyName}/redirectFBReview',[Company::class,'redirectFBReview']);
+Route::get('/{companyName}/redirectGoogleReview',[Company::class,'showOptions']);
+Route::get('/{companyName}/showPriceList',[Company::class,'showOptions']);
 
-Route::get('/redirect',function(Request $request){
-    $company_name=$request->get('q');
-    $iPod    = stripos($_SERVER['HTTP_USER_AGENT'],"iPod");
-    $iPhone  = stripos($_SERVER['HTTP_USER_AGENT'],"iPhone");
-    $iPad    = stripos($_SERVER['HTTP_USER_AGENT'],"iPad");
-    $Android = stripos($_SERVER['HTTP_USER_AGENT'],"Android");
-    $to="";
-    if($iPod||$iPhone||$iPad){
-        $to="fb://profile/".$company_name;
-    }else if($Android){
-        $to="fb://page/".$company_name;
-    }
-    return Redirect::away($to); 
+
+Route::middleware(['auth'])->group(function(){
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+    Route::resource('/generate',Generator::class);
 });
+
+require __DIR__.'/auth.php';
